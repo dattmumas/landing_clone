@@ -43,16 +43,16 @@ export default function NavBar() {
             </div>
             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
               <a
-                href="#"
+                href="/our-deck"
                 className="border-transparent text-gray-300 hover:text-gray-400 hover:border-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
-                About
+                Our Deck
               </a>
               <a
                 href="#"
                 className="border-transparent text-gray-300 hover:text-gray-400 hover:border-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
-                Team
+                Our Team
               </a>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function NavBar() {
               type="button"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300"
             >
-              Book A Demo
+              Contact
             </button>
           </div>
         </div>

@@ -1,12 +1,8 @@
 import React from "react";
-import NavBar from "./nav_bar/nav_bar";
-import HeroBackground from "./hero_section/hero_background";
-import EnterpriseHeader from "@/components/infosection/enterpriseHeader";
-import OrderToCashFlow from "@/components/infosection/orderToCashFlow";
-import HowItWorks from "@/components/infosection/howItWorks";
-import BusinessImpact from "@/components/infosection/businessImpact";
-import FutureVision from "@/components/infosection/futureVision";
-import OperationalSoftwareModules from "@/components/infosection/operationalSotwareModules";
+import HeroBackground from "./components/hero_section/hero_background";
+import EnterpriseHeader from "@/app/components/infosection/enterpriseHeader";
+import Footer from "@/app/components/footer/footerSection";
+import NavBar from "./components/nav_bar/nav_bar";
 
 export default function Home() {
   return (
@@ -14,11 +10,7 @@ export default function Home() {
       <NavBar />
       <HeroBackground />
       <EnterpriseHeader />
-      <OrderToCashFlow />
-      <HowItWorks />
-      <BusinessImpact />
-      <FutureVision />
-      <OperationalSoftwareModules />
+      <Footer />
     </div>
   );
 }
