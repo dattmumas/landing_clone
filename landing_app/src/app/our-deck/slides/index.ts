@@ -1,6 +1,6 @@
 import { default as IntroSlide } from "./01-intro/Slide";
 import { default as ProblemSlide } from "./02-problem/Slide";
-// import { default as SolutionSlide } from "./03-solution/Slide";
+import { default as SolutionSlide } from "./03-solution/Slide";
 // import { default as MarketSlide } from "./04-market/Slide";
 // import { default as TechnologySlide } from "./05-technology/Slide";
 // import { default as BusinessModelSlide } from "./06-business-model/Slide";
@@ -22,12 +22,12 @@ export const slidesMetadata = [
     description:
       "The messy, manual processes that slow down business operations.",
   },
-  //   {
-  //     id: "solution",
-  //     title: "Our Solution",
-  //     description:
-  //       "How Payce is transforming enterprise software through automation.",
-  //   },
+  {
+    id: "solution",
+    title: "Our Solution",
+    description:
+      "How Payce is transforming enterprise software through automation.",
+  },
   //   {
   //     id: "market",
   //     title: "Market Opportunity",
@@ -69,7 +69,7 @@ export const slidesMetadata = [
 export const slides = [
   IntroSlide,
   ProblemSlide,
-  //   SolutionSlide,
+  SolutionSlide,
   //   MarketSlide,
   //   TechnologySlide,
   //   BusinessModelSlide,

@@ -100,7 +100,7 @@ export default function OurDeck() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
           <p>© {new Date().getFullYear()} Payce, Inc. All rights reserved.</p>
           <p className="mt-1 md:mt-0">
-            Public Deck - Please Inquire for Investor Deck
+            Public Deck - Please Inquire for Private Data
           </p>
         </div>
       </footer>

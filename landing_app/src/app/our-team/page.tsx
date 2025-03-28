@@ -12,7 +12,6 @@ const teamData = [
     bio: "MBA graduate with extensive experience in financial strategy and operations. Currently serving as Director of Finance at a VC-backed CPG startup, bringing a wealth of knowledge in financial planning, capital raising, and strategic growth initiatives.",
     experience: [
       "Director of Finance at VC-backed CPG startup",
-      "MBA from top business school",
       "Expertise in financial modeling and capital allocation",
       "Background in venture finance and fundraising strategy",
     ],
@@ -21,7 +20,7 @@ const teamData = [
   {
     name: "Co-Founder Name",
     role: "Co-Founder & CTO",
-    bio: "Senior Engineer at Amazon with over 15 years of development experience. Expertise in building scalable systems, cloud architecture, and enterprise software solutions that serve millions of users.",
+    bio: "Senior Engineer at Amazon with over 12 years of development experience. Expertise in building scalable systems, cloud architecture, and enterprise software solutions that serve millions of users.",
     experience: [
       "Senior Engineer at Amazon",
       "15+ years of software development experience",

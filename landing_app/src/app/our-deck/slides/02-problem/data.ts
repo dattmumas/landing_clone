@@ -3,7 +3,7 @@
 
 export const slideData = {
   title: "The Problem",
-  subtitle: "Modern Financial Operations Face Critical Challenges",
+  subtitle: "Modern Operational Systems Face Critical Challenges",
 
   problemStatement:
     "Modern finance and operations systems are not designed to optimally handle automation as a presumed reality. They require manual intervention at every step, communication between parties to translate operational information into financial entries, and are designed with yesterday's realities at their core.",
@@ -35,5 +35,5 @@ export const slideData = {
   },
 
   conclusion:
-    "These traditional finance operations create bottlenecks that prevent businesses from scaling, and necessitate teams of people who aren't pushing the ball forward",
+    "These traditional finance operations create bottlenecks that prevent businesses from scaling, and necessitate teams of people who aren't pushing the ball forward.",
 };
