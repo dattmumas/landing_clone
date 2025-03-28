@@ -76,7 +76,7 @@ const EnterpriseHeader = () => {
               the messy, manual process that slows down revenue and cash flow.
               Our goal: get businesses paid faster, and systems completely in
               sync with less friction, fewer errors, and zero conversation -
-              either internal and external.
+              either internal or external.
             </p>
 
             {/* Button with new green color */}

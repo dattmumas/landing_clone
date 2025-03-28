@@ -12,7 +12,7 @@ export const slideData = {
     {
       title: "Manual Processing",
       description:
-        "Finance teams spend 75% of their time on repetitive tasks rather than strategic initiatives.",
+        "Operations teams spend critical time translating operational data into financial entries.",
       icon: "⏱️",
     },
     {
