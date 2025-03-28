@@ -40,10 +40,10 @@ const EnterpriseHeader = () => {
             className="text-xl text-gray-600 max-w-3xl mx-auto mb-16"
           >
             Our mission is to build an ecosystem of enterprise software that
-            puts operations and growth first and reduce the need for accounting
-            functions entirely. We are leveraging breakthroughs in modern
-            financial technology, banking, and automation - Payce is putting the
-            power back in the hands of operations and business development, and
+            puts operations and growth first and reduces the need for accounting
+            functions entirely. By leveraging breakthroughs in financial
+            technology, banking, and automation - Payce is putting the power
+            back in the hands of operations and business development, and
             breaking down the barriers to growth.
           </motion.p>
         </motion.div>
@@ -74,8 +74,9 @@ const EnterpriseHeader = () => {
             <p className="text-gray-600 max-w-2xl mx-auto">
               We&apos;re currently focused on fixing the order-to-cash process —
               the messy, manual process that slows down revenue and cash flow.
-              Our goal: get businesses paid faster with less friction, less
-              conversation, and less conversation - both internal and external.
+              Our goal: get businesses paid faster, and systems completely in
+              sync with less friction, fewer errors, and zero conversation -
+              either internal and external.
             </p>
 
             {/* Button with new green color */}
