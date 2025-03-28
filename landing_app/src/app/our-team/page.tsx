@@ -7,9 +7,9 @@ import NavBar from "../components/nav_bar/nav_bar";
 // Team member data
 const teamData = [
   {
-    name: "Your Name",
+    name: "Matthew Dumas",
     role: "Co-Founder & CEO",
-    bio: "MBA graduate with extensive experience in financial strategy and operations. Currently serving as Director of Finance at a VC-backed CPG startup, bringing a wealth of knowledge in financial planning, capital raising, and strategic growth initiatives.",
+    bio: "MBA graduate with extensive experience in financial strategy and operations. Currently serving as Director of Finance at a VC-backed CPG startup, bringing a wealth of knowledge in operations software, capital raising, and strategic growth initiatives.",
     experience: [
       "Director of Finance at VC-backed CPG startup",
       "Expertise in financial modeling and capital allocation",
@@ -18,7 +18,7 @@ const teamData = [
     linkedin: "https://linkedin.com/in/yourprofile",
   },
   {
-    name: "Co-Founder Name",
+    name: "Christopher Dumas",
     role: "Co-Founder & CTO",
     bio: "Senior Engineer at Amazon with over 12 years of development experience. Expertise in building scalable systems, cloud architecture, and enterprise software solutions that serve millions of users.",
     experience: [
