@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.5.0",
+    "heroicons": "^2.2.0",
     "lucide-react": "^0.483.0",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "reactflow": "^11.11.4",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {

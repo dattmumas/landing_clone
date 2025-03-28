@@ -302,12 +302,6 @@ const SolutionSlide: React.FC = () => {
                     </linearGradient>
                   </defs>
                 </svg>
-
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center">
-                  <p className="text-gray-400 text-sm italic">
-                    Seamless Integration
-                  </p>
-                </div>
               </motion.div>
             </div>
           )}
