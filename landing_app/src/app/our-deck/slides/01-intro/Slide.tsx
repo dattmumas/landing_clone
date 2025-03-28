@@ -62,11 +62,11 @@ const IntroSlide: React.FC = () => {
             <p className="text-white text-md leading-relaxed">
               At Payce we believe that accounting is, to a meaningful extent,
               now fully automatable. We believe the system of rules modern
-              accounting requires is entirely executable by modern technology,
+              accounting requires is entirely digestible by modern technology,
               and the translation of those rules into action requires only the
-              context that can be achieved via modernized financial data rails.
-              We are designing the technology that will serve as those data
-              rails, and the systems that will power the businesses of tomorrow.
+              context that can be achieved via modernized data rails. We are
+              designing the technology that will serve as those data rails, and
+              the systems that will power the businesses of tomorrow.
             </p>
           </motion.div>
         </div>

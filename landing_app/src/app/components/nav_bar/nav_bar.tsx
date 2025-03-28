@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -38,7 +39,7 @@ export default function NavBar() {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <span className="text-white text-lg font-bold lg:text-2xl">
-                Payce
+                <a href="/">Payce</a>
               </span>
             </div>
             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
