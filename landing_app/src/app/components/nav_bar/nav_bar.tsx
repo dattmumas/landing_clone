@@ -49,7 +49,7 @@ export default function NavBar() {
                 Our Deck
               </a>
               <a
-                href="#"
+                href="/our-team"
                 className="border-transparent text-gray-300 hover:text-gray-400 hover:border-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Our Team
