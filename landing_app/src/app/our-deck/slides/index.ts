@@ -1,7 +1,7 @@
 import { default as IntroSlide } from "./01-intro/Slide";
 import { default as ProblemSlide } from "./02-problem/Slide";
 import { default as SolutionSlide } from "./03-solution/Slide";
-// import { default as MarketSlide } from "./04-market/Slide";
+import { default as MarketSlide } from "./04-market/Slide";
 // import { default as TechnologySlide } from "./05-technology/Slide";
 // import { default as BusinessModelSlide } from "./06-business-model/Slide";
 // import { default as GoToMarketSlide } from "./07-go-to-market/Slide";
@@ -28,11 +28,11 @@ export const slidesMetadata = [
     description:
       "How Payce is transforming enterprise software through automation.",
   },
-  //   {
-  //     id: "market",
-  //     title: "Market Opportunity",
-  //     description: "Analysis of our target market and growth potential.",
-  //   },
+  {
+    id: "market",
+    title: "Market Opportunity",
+    description: "Analysis of our target market and growth potential.",
+  },
   //   {
   //     id: "technology",
   //     title: "Technology",
@@ -70,7 +70,7 @@ export const slides = [
   IntroSlide,
   ProblemSlide,
   SolutionSlide,
-  //   MarketSlide,
+  MarketSlide,
   //   TechnologySlide,
   //   BusinessModelSlide,
   //   GoToMarketSlide,

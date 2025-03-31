@@ -60,13 +60,13 @@ const IntroSlide: React.FC = () => {
           >
             <h3 className="text-white text-xl font-bold mb-3">Core Beliefs</h3>
             <p className="text-white text-md leading-relaxed">
-              At Payce we believe that accounting is, to a meaningful extent,
-              now fully automatable. We believe the system of rules modern
-              accounting requires is entirely digestible by modern technology,
-              and the translation of those rules into action requires only the
-              context that can be achieved via modernized data rails. We are
-              designing the technology that will serve as those data rails, and
-              the systems that will power the businesses of tomorrow.
+              At Payce, we believe the businesses of tomorrow will be faster,
+              more innovative, and fundamentally smaller. These businesses will
+              be powered by systems that automate everything other than the
+              tasks who&apos;s main input is the human spirit. At Payce, we
+              strive to build the systems that will enable the individual to
+              accomplish organizational feats without worrying about the
+              mundane.
             </p>
           </motion.div>
         </div>
@@ -91,7 +91,7 @@ const IntroSlide: React.FC = () => {
                 textShadow: "0 0 8px rgba(17, 138, 178, 0.7)",
               }}
             >
-              Our Automation Roadmap
+              Product Focus
             </p>
 
             <div className="flex flex-col space-y-3">
@@ -151,7 +151,7 @@ const IntroSlide: React.FC = () => {
                 <div className="ml-4">
                   <p className="text-white font-medium">Inventory Management</p>
                   <p className="text-gray-400 text-sm">
-                    Optimizing inventory, reducing costs
+                    Streamlining inventory management and order fulfillment
                   </p>
                 </div>
               </div>
