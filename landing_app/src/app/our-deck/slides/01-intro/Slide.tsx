@@ -61,12 +61,12 @@ const IntroSlide: React.FC = () => {
             <h3 className="text-white text-xl font-bold mb-3">Core Beliefs</h3>
             <p className="text-white text-md leading-relaxed">
               At Payce, we believe the businesses of tomorrow will be faster,
-              more innovative, and fundamentally smaller. These businesses will
-              be powered by systems that automate everything other than the
-              tasks who&apos;s main input is the human spirit. At Payce, we
-              strive to build the systems that will enable the individual to
-              accomplish organizational feats without worrying about the
-              mundane.
+              more innovative, larger in impact, but fundamentally smaller in
+              make up. These businesses will be powered by systems that automate
+              everything other than the tasks who&apos;s main input is human
+              ingenuity. At Payce, we strive to build the systems that will
+              enable the individual to accomplish organizational feats without
+              worrying about the mundane.
             </p>
           </motion.div>
         </div>
