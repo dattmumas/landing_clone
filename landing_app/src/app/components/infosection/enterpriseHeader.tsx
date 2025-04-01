@@ -87,6 +87,13 @@ const EnterpriseHeader = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-2 bg-[#06d6a0] text-white rounded-lg shadow-md hover:bg-[#05c091] transition-colors"
+                onClick={() => {
+                  window.location.href = "/our-products/order-to-cash";
+                }}
+                style={{
+                  border: "1px solid #06d6a0",
+                  boxShadow: "0 0 10px rgba(6, 214, 160, 0.3)",
+                }}
               >
                 Learn More
               </motion.button>
