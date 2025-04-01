@@ -204,7 +204,7 @@ export default function NavBar() {
                             Our Team
                           </Link>
                           <Link
-                            href="/contact"
+                            href="/our-team"
                             className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700"
                           >
                             Contact

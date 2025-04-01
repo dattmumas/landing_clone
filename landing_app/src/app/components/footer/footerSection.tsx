@@ -39,6 +39,7 @@ const Footer = () => {
           {/* Company Name and Copyright */}
           <div className="mb-4 md:mb-0">
             <h3 className="text-lg font-bold">Payce</h3>
+            <h3 className="text-sm text-gray-600">info@payceup.com</h3>
             <p className="text-sm text-gray-600">
               © {new Date().getFullYear()} Payce, Inc. All rights reserved.
             </p>
@@ -49,7 +50,7 @@ const Footer = () => {
             <a href="/our-deck" className="text-gray-700 hover:text-gray-900">
               Our Deck
             </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900">
+            <a href="/our-team" className="text-gray-700 hover:text-gray-900">
               Contact
             </a>
             <a href="#" className="text-gray-700 hover:text-gray-900">
