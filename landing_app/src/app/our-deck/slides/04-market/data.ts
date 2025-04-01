@@ -15,8 +15,9 @@ export const slideData = {
 
   painPoints: [
     {
-      stat: "82%",
-      description: "of startup failures attributed to cash flow problems",
+      stat: "10-20",
+      description:
+        "employees before a team makes their first finance or accounting hire",
     },
     {
       stat: "15-20 hours",

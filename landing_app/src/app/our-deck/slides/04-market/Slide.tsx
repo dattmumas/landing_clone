@@ -198,7 +198,7 @@ const MarketSlide: React.FC = () => {
         {/* Target Segment */}
         <div className="bg-gray-50 rounded-xl p-4 shadow-md">
           <h3 className="text-xl font-bold mb-3 text-[#118ab2]">
-            Target Segment
+            Initial Target Segment
           </h3>
           <div className="flex flex-col space-y-4 mt-2">
             <div className="text-center py-3 px-4 border-b border-gray-200">

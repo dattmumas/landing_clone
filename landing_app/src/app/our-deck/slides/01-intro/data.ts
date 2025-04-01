@@ -17,7 +17,7 @@ export const slideData = {
 
   // Key metrics or facts
   keyMetrics: [
-    { label: "Market Size", value: "$50B+" },
+    { label: "Market Size", value: "$120B+" },
     {
       label: "Target Segment",
       value: "Startup & Midmarket",
