@@ -39,12 +39,14 @@ const EnterpriseHeader = () => {
             viewport={{ once: true }}
             className="text-xl text-gray-600 max-w-3xl mx-auto mb-16"
           >
-            Our mission is to build an ecosystem of enterprise software that
-            puts operations and growth first and reduces the need for accounting
-            functions entirely. By leveraging breakthroughs in financial
-            technology, banking, and automation - Payce is putting the power
-            back in the hands of operations and business development, and
-            breaking down the barriers to growth.
+            At Payce, our mission is to enable individuals to achieve
+            organizational feats. Our plan is to build an ecosystem of
+            enterprise software that puts operations and growth first, and
+            reduces the need for manual processes wherever possible. By
+            leveraging breakthroughs in financial technology, banking, and
+            automation - Payce is putting the power back in the hands of
+            operations and business development, and breaking down the barriers
+            to growth.
           </motion.p>
         </motion.div>
 
