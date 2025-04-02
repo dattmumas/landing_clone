@@ -1,10 +1,13 @@
+// Updated hero_background.tsx
+
 "use client";
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
+import { ExtendedCSSProperties } from "@/lib/cssTypes";
 
 // Separate component for the glowing dots
-const GlowingDots = () => {
+const GlowingDots: React.FC = () => {
   // Create dots array only once using useMemo
   const dots = useMemo(() => {
     return Array.from({ length: 20 }).map((_, i) => ({
@@ -14,12 +17,34 @@ const GlowingDots = () => {
       left: `${Math.random() * 100}%`,
       animationDuration: 3 + Math.random() * 4,
       delay: Math.random() * 2,
+      opacity: 0.2 + Math.random() * 0.3,
     }));
   }, []);
 
+  // Helper function to detect low performance devices
+  const isLowPerformanceDevice = useMemo(() => {
+    if (typeof window === "undefined") return false;
+
+    // Check if the user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // Check if it's likely a mobile device
+    const isMobileDevice =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
+    return prefersReducedMotion || isMobileDevice;
+  }, []);
+
+  // Calculate optimal number of dots based on device performance
+  const optimizedDotCount = isLowPerformanceDevice ? 10 : 20;
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {dots.map((dot) => (
+      {dots.slice(0, optimizedDotCount).map((dot) => (
         <motion.div
           key={dot.id}
           style={{
@@ -31,7 +56,7 @@ const GlowingDots = () => {
             top: dot.top,
             left: dot.left,
             boxShadow: "0 0 3px 1px rgba(255, 255, 255, 0.7)",
-            opacity: 0.2 + Math.random() * 0.3,
+            opacity: dot.opacity,
           }}
           animate={{
             y: [0, 15, 0],
@@ -43,10 +68,13 @@ const GlowingDots = () => {
             ],
           }}
           transition={{
-            duration: dot.animationDuration,
-            repeat: Infinity,
+            duration: isLowPerformanceDevice
+              ? dot.animationDuration * 0.7
+              : dot.animationDuration,
+            repeat: isLowPerformanceDevice ? 5 : Infinity,
             repeatType: "reverse",
             delay: dot.delay,
+            ease: "easeInOut",
           }}
         />
       ))}
@@ -54,59 +82,76 @@ const GlowingDots = () => {
   );
 };
 
-// Define an extended interface for CSS properties that includes vendor prefixes
-interface ExtendedCSSProperties extends React.CSSProperties {
-  WebkitMaskImage?: string;
-  MozMaskImage?: string;
-  msMaskImage?: string;
-  OmaskImage?: string;
-}
-
 const HeroBackground: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [heroHeight, setHeroHeight] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [windowHeight, setWindowHeight] = useState(0);
   const heroRef = React.useRef<HTMLDivElement>(null);
 
-  // Get hero height after mounting
+  // Set the CSS variable for consistent vh units
+  const setVH = useCallback(() => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }, []);
+
+  // Handle window resize with useCallback for better performance
+  const handleResize = useCallback(() => {
+    if (heroRef.current) {
+      setHeroHeight(heroRef.current.offsetHeight);
+    }
+    setWindowHeight(window.innerHeight);
+    setVH();
+  }, [setVH]);
+
+  // Handle scroll with useCallback for better performance
+  const handleScroll = useCallback(() => {
+    setScrollY(window.scrollY);
+  }, []);
+
+  // Get initial state values after mounting
   useEffect(() => {
+    // Set initial values
+    setWindowHeight(window.innerHeight);
+
     if (heroRef.current) {
       setHeroHeight(heroRef.current.offsetHeight);
     }
 
-    // Handle window resize
-    const handleResize = () => {
-      if (heroRef.current) {
-        setHeroHeight(heroRef.current.offsetHeight);
-      }
-    };
+    // Initialize the vh custom property
+    setVH();
 
+    // Add event listeners
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [handleResize, setVH]);
 
   // Track scroll position
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
-  // Calculate fade progress for gradient
-  const fadeProgress = Math.min(scrollY / (heroHeight * 0.5), 1);
+  // Calculate fade progress for gradient with useMemo
+  const fadeProgress = useMemo(() => {
+    return Math.min(scrollY / (heroHeight * 0.5), 1);
+  }, [scrollY, heroHeight]);
 
   // Create the container style with proper typing
-  const containerStyle: ExtendedCSSProperties = {
-    ...styles.container,
-    // Add gradient mask with all vendor prefixes for cross-browser compatibility
-    WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-    MozMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-    msMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-    OmaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-    maskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-  };
+  const containerStyle = useMemo<ExtendedCSSProperties>(
+    () => ({
+      ...styles.container,
+      // Add gradient mask with all vendor prefixes for cross-browser compatibility
+      WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+      MozMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+      msMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+      OmaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+      maskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+      // Use CSS variable for more consistent height across devices
+      height: `calc(var(--vh, 1vh) * 90)`,
+    }),
+    []
+  );
 
   return (
     <div className="relative" ref={heroRef}>
@@ -117,6 +162,7 @@ const HeroBackground: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           style={styles.text}
+          className="text-[clamp(3.5rem,7vw,6rem)]"
         >
           Systems built to Power the Next Generation of Businesses.
         </motion.h1>
@@ -125,17 +171,20 @@ const HeroBackground: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h2 style={styles.subtext}>
+          <h2
+            style={styles.subtext}
+            className="text-[clamp(1.2rem,2.5vw,1.8rem)]"
+          >
             Dismantling the complexity of traditional business software through
             automation.
           </h2>
         </motion.div>
 
-        {/* Add the persistent glowing dots */}
+        {/* Glowing dots background effect */}
         <GlowingDots />
       </div>
 
-      {/* Single clean gradient transition */}
+      {/* Gradient transition */}
       <div
         className="absolute -bottom-1 left-0 right-0 bg-gradient-to-t from-white via-white to-transparent"
         style={{
@@ -150,7 +199,6 @@ const HeroBackground: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    height: "90vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -160,9 +208,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     position: "relative",
     overflow: "hidden",
     paddingBottom: "80px",
+    minHeight: "90vh", // Fallback and minimum height
   },
   text: {
-    fontSize: "clamp(2.5rem, 5vw, 4rem)",
     color: "#FFFFFF",
     textShadow:
       "0 0 1px #FFFFFF, 0 0 3px #FFFFFF, 0 0 6px #FFFFFF, 0 0 1px #FFFFFF",
@@ -172,9 +220,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     zIndex: 10,
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
+    fontSize: "3rem", // Base size fallback for older browsers
   },
   subtext: {
-    fontSize: "clamp(1rem, 2vw, 1.5rem)",
     color: "#CCCCCC",
     textAlign: "center",
     fontFamily: "var(--font-sans)",
@@ -182,6 +230,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     zIndex: 10,
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
+    fontSize: "1.2rem", // Base size fallback for older browsers
   },
 };
 

@@ -9,7 +9,7 @@ const IntroSlide: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full h-full flex flex-col relative overflow-hidden bg-black"
+      className="w-full h-full flex flex-col relative min-h-[500px] bg-black"
     >
       {/* Subtle glow elements with new colors */}
       <div className="absolute top-0 left-0 w-full h-full">
@@ -23,10 +23,10 @@ const IntroSlide: React.FC = () => {
         ></div>
       </div>
 
-      {/* Main content grid */}
-      <div className="w-full h-full grid grid-cols-2 gap-8 p-12 z-10 relative">
+      {/* Main content grid - responsive layout */}
+      <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 p-4 md:p-12 z-10 relative">
         {/* Left side - Logo, Headline, and Core Beliefs */}
-        <div className="flex flex-col justify-start pt-16 items-start">
+        <div className="flex flex-col justify-start pt-4 md:pt-16 items-start">
           <motion.h1
             initial={{ x: -30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -56,7 +56,7 @@ const IntroSlide: React.FC = () => {
             initial={{ x: -30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.7 }}
-            className="mt-4 pr-8"
+            className="mt-4 pr-0 md:pr-8"
           >
             <h3 className="text-white text-xl font-bold mb-3">Core Beliefs</h3>
             <p className="text-white text-md leading-relaxed">
@@ -163,7 +163,7 @@ const IntroSlide: React.FC = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.7 }}
-            className="flex flex-row space-x-6"
+            className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6"
           >
             {slideData.keyMetrics.map((metric, index) => (
               <motion.div

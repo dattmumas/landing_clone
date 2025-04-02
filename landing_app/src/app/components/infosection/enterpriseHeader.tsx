@@ -23,7 +23,7 @@ const EnterpriseHeader = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-5xl font-bold mb-8 leading-tight">
+          <h2 className="text-5xl font-bold mb-8 leading-tight text-black">
             Reimagining Enterprise Software
             <br />
             {/* Updated gradient colors to green and blue */}

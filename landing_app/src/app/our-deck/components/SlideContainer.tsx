@@ -16,12 +16,11 @@ const SlideContainer: React.FC<SlideContainerProps> = ({ currentSlide }) => {
     <div
       className="relative w-full"
       style={{
-        // Maintain 16:9 aspect ratio but ensure it fills available space
-        paddingBottom: "56.25%",
-        maxHeight: "calc(100vh - 200px)", // Limit maximum height to prevent excessive size
+        // Maintain 16:9 aspect ratio but ensure it scales properly
+        paddingBottom: "56.25%", 
       }}
     >
-      <div className="absolute inset-0 bg-white rounded-lg shadow-xl overflow-hidden">
+      <div className="absolute inset-0 bg-white rounded-lg shadow-xl overflow-y-auto h-full transform-origin-center scale-100">
         <AnimatePresence mode="wait">
           <CurrentSlideComponent key={currentSlide} />
         </AnimatePresence>

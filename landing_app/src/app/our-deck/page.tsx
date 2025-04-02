@@ -68,12 +68,12 @@ export default function OurDeck() {
         {/* Slide display area - maximized space */}
         <div className="flex-grow flex items-center justify-center p-0 sm:p-2">
           <div className="w-full max-w-7xl mx-auto">
-            {/* Slide container with 16:9 aspect ratio - made larger */}
+            {/* Slide container with 16:9 aspect ratio - made responsive */}
             <div
               className="relative w-full"
               style={{ paddingBottom: "56.25%" }}
             >
-              <div className="absolute inset-0 bg-white rounded-lg shadow-xl overflow-hidden">
+              <div className="absolute inset-0 bg-white rounded-lg shadow-xl overflow-y-auto h-full">
                 <AnimatePresence mode="wait">
                   <CurrentSlideComponent key={currentSlide} />
                 </AnimatePresence>
@@ -100,7 +100,7 @@ export default function OurDeck() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
           <p>© {new Date().getFullYear()} Payce, Inc. All rights reserved.</p>
           <p className="mt-1 md:mt-0">
-            Public Deck - Please Inquire for Private Data
+            Public Deck - Please Inquire for Private Version
           </p>
         </div>
       </footer>
