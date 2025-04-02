@@ -70,7 +70,7 @@ const EnterpriseHeader = () => {
           className="bg-gradient-to-r from-gray-50 to-[#e6fff9] p-10 rounded-2xl shadow-lg border border-gray-100"
         >
           <div className="text-center">
-            <h3 className="inline-block text-2xl font-bold mb-4 pb-2 border-b-2 border-[#06d6a0]">
+            <h3 className="inline-block text-2xl font-bold mb-4 pb-2 border-b-2 border-[#06d6a0] text-black">
               Our Current Focus -
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
