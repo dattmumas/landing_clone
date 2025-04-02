@@ -17,7 +17,7 @@ const GlowingDots: React.FC = () => {
       left: `${Math.random() * 100}%`,
       animationDuration: 3 + Math.random() * 4,
       delay: Math.random() * 2,
-      opacity: 0.2 + Math.random() * 0.3,
+      opacity: 0.6 + Math.random() * 0.4,
     }));
   }, []);
 
@@ -39,8 +39,27 @@ const GlowingDots: React.FC = () => {
     return prefersReducedMotion || isMobileDevice;
   }, []);
 
+  // Detect color scheme
+  const [, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Initial check
+    setIsDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+    // Add listener for changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   // Calculate optimal number of dots based on device performance
   const optimizedDotCount = isLowPerformanceDevice ? 10 : 20;
+
+  // Colors based on color scheme
+  const dotColor = "white"; // Set dots to always be white
+  const dotShadowColor = "rgba(255, 255, 255, 0.7)"; // Set shadow color to white with opacity
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -52,19 +71,19 @@ const GlowingDots: React.FC = () => {
             width: `${dot.size}px`,
             height: `${dot.size}px`,
             borderRadius: "50%",
-            backgroundColor: "var(--foreground)",
+            backgroundColor: dotColor,
             top: dot.top,
             left: dot.left,
-            boxShadow: "0 0 3px 1px var(--foreground, rgba(255, 255, 255, 0.7))",
+            boxShadow: `0 0 3px 1px ${dotShadowColor}`,
             opacity: dot.opacity,
           }}
           animate={{
             y: [0, 15, 0],
             opacity: [0.3, 0.6, 0.3],
             boxShadow: [
-              "0 0 2px 1px var(--foreground, rgba(255, 255, 255, 0.5))",
-              "0 0 5px 2px var(--foreground, rgba(255, 255, 255, 0.8))",
-              "0 0 2px 1px var(--foreground, rgba(255, 255, 255, 0.5))",
+              `0 0 2px 1px ${dotShadowColor.replace("0.7", "0.5")}`,
+              `0 0 5px 2px ${dotShadowColor.replace("0.7", "0.8")}`,
+              `0 0 2px 1px ${dotShadowColor.replace("0.7", "0.5")}`,
             ],
           }}
           transition={{
@@ -188,7 +207,8 @@ const HeroBackground: React.FC = () => {
       <div
         className="absolute -bottom-1 left-0 right-0"
         style={{
-          backgroundImage: "linear-gradient(to top, var(--gradient-from), var(--gradient-via), transparent)",
+          backgroundImage:
+            "linear-gradient(to top, var(--gradient-from), var(--gradient-via), transparent)",
           height: "250px",
           opacity: fadeProgress,
           pointerEvents: "none",
