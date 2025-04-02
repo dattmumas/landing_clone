@@ -95,9 +95,12 @@ const HeroBackground: React.FC = () => {
       <div
         style={{
           ...styles.container,
-          // Add gradient mask directly to the container
-          maskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+          // Add gradient mask with all vendor prefixes for cross-browser compatibility
           WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+          MozMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`, 
+          msMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+          OmaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+          maskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
         }}
       >
         <motion.h1
@@ -150,22 +153,26 @@ const styles: { [key: string]: React.CSSProperties } = {
     paddingBottom: "80px",
   },
   text: {
-    fontSize: "4rem",
+    fontSize: "clamp(2.5rem, 5vw, 4rem)",
     color: "#FFFFFF",
     textShadow:
       "0 0 1px #FFFFFF, 0 0 3px #FFFFFF, 0 0 6px #FFFFFF, 0 0 1px #FFFFFF",
-    fontFamily: "Roboto, Arial, sans-serif",
+    fontFamily: "var(--font-sans)",
     maxWidth: "80%",
     textAlign: "center",
     zIndex: 10,
+    WebkitFontSmoothing: "antialiased",
+    MozOsxFontSmoothing: "grayscale",
   },
   subtext: {
-    fontSize: "1.5rem",
+    fontSize: "clamp(1rem, 2vw, 1.5rem)",
     color: "#CCCCCC",
     textAlign: "center",
-    fontFamily: "Roboto, Arial, sans-serif",
+    fontFamily: "var(--font-sans)",
     marginTop: "1rem",
     zIndex: 10,
+    WebkitFontSmoothing: "antialiased",
+    MozOsxFontSmoothing: "grayscale",
   },
 };
 
