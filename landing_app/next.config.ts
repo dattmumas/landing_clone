@@ -11,11 +11,12 @@ const nextConfig: NextConfig = {
   experimental: {
     // Enable optimizations for cross-browser compatibility
     optimizeCss: true,
-    // Ensure proper font loading
-    fontLoaders: [
-      { loader: '@next/font/google', options: { subsets: ['latin'] } },
-    ],
   },
+  
+  // Font configuration
+  fontLoaders: [
+    { loader: '@next/font/google', options: { subsets: ['latin'] } },
+  ],
 };
 
 export default nextConfig;

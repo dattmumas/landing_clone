@@ -54,6 +54,14 @@ const GlowingDots = () => {
   );
 };
 
+// Define an extended interface for CSS properties that includes vendor prefixes
+interface ExtendedCSSProperties extends React.CSSProperties {
+  WebkitMaskImage?: string;
+  MozMaskImage?: string;
+  msMaskImage?: string;
+  OmaskImage?: string;
+}
+
 const HeroBackground: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [heroHeight, setHeroHeight] = useState(0);
@@ -89,20 +97,21 @@ const HeroBackground: React.FC = () => {
   // Calculate fade progress for gradient
   const fadeProgress = Math.min(scrollY / (heroHeight * 0.5), 1);
 
+  // Create the container style with proper typing
+  const containerStyle: ExtendedCSSProperties = {
+    ...styles.container,
+    // Add gradient mask with all vendor prefixes for cross-browser compatibility
+    WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+    MozMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+    msMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+    OmaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+    maskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
+  };
+
   return (
     <div className="relative" ref={heroRef}>
       {/* Main Hero Container */}
-      <div
-        style={{
-          ...styles.container,
-          // Add gradient mask with all vendor prefixes for cross-browser compatibility
-          WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-          MozMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`, 
-          msMaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-          OmaskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-          maskImage: `linear-gradient(to bottom, black 0%, black 85%, transparent 100%)`,
-        }}
-      >
+      <div style={containerStyle}>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

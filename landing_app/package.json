@@ -12,6 +12,7 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.1",
+    "critters": "^0.0.23",
     "framer-motion": "^12.5.0",
     "heroicons": "^2.2.0",
     "lucide-react": "^0.483.0",
