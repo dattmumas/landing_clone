@@ -52,19 +52,19 @@ const GlowingDots: React.FC = () => {
             width: `${dot.size}px`,
             height: `${dot.size}px`,
             borderRadius: "50%",
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "var(--foreground)",
             top: dot.top,
             left: dot.left,
-            boxShadow: "0 0 3px 1px rgba(255, 255, 255, 0.7)",
+            boxShadow: "0 0 3px 1px var(--foreground, rgba(255, 255, 255, 0.7))",
             opacity: dot.opacity,
           }}
           animate={{
             y: [0, 15, 0],
             opacity: [0.3, 0.6, 0.3],
             boxShadow: [
-              "0 0 2px 1px rgba(255, 255, 255, 0.5)",
-              "0 0 5px 2px rgba(255, 255, 255, 0.8)",
-              "0 0 2px 1px rgba(255, 255, 255, 0.5)",
+              "0 0 2px 1px var(--foreground, rgba(255, 255, 255, 0.5))",
+              "0 0 5px 2px var(--foreground, rgba(255, 255, 255, 0.8))",
+              "0 0 2px 1px var(--foreground, rgba(255, 255, 255, 0.5))",
             ],
           }}
           transition={{
@@ -186,8 +186,9 @@ const HeroBackground: React.FC = () => {
 
       {/* Gradient transition */}
       <div
-        className="absolute -bottom-1 left-0 right-0 bg-gradient-to-t from-white via-white to-transparent"
+        className="absolute -bottom-1 left-0 right-0"
         style={{
+          backgroundImage: "linear-gradient(to top, var(--gradient-from), var(--gradient-via), transparent)",
           height: "250px",
           opacity: fadeProgress,
           pointerEvents: "none",

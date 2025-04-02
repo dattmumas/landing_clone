@@ -7,7 +7,7 @@ const EnterpriseHeader = () => {
   return (
     <section className="py-24 w-full overflow-hidden relative">
       {/* Subtle background pattern with new green color */}
-      <div className="absolute inset-0 bg-white">
+      <div className="absolute inset-0" style={{ background: "var(--background)" }}>
         <div
           className="absolute inset-0 opacity-5 bg-[radial-gradient(#06d6a0_1px,transparent_1px)]"
           style={{ backgroundSize: "20px 20px" }}
@@ -23,7 +23,7 @@ const EnterpriseHeader = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-5xl font-bold mb-8 leading-tight text-black">
+          <h2 className="text-5xl font-bold mb-8 leading-tight" style={{ color: "var(--foreground)" }}>
             Reimagining Enterprise Software
             <br />
             {/* Updated gradient colors to green and blue */}
@@ -37,7 +37,7 @@ const EnterpriseHeader = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto mb-16"
+            className="text-xl max-w-3xl mx-auto mb-16" style={{ color: "var(--foreground)", opacity: 0.7 }}
           >
             At Payce, our mission is to enable individuals to achieve
             organizational feats. Our plan is to build an ecosystem of
@@ -67,13 +67,16 @@ const EnterpriseHeader = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-gray-50 to-[#e6fff9] p-10 rounded-2xl shadow-lg border border-gray-100"
+          className="p-10 rounded-2xl shadow-lg border" style={{ 
+            background: "linear-gradient(to right, var(--card-background), #e6fff9)", 
+            borderColor: "var(--card-background)" 
+          }}
         >
           <div className="text-center">
-            <h3 className="inline-block text-2xl font-bold mb-4 pb-2 border-b-2 border-[#06d6a0] text-black">
+            <h3 className="inline-block text-2xl font-bold mb-4 pb-2 border-b-2 border-[#06d6a0]" style={{ color: "var(--foreground)" }}>
               Our Current Focus -
             </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="max-w-2xl mx-auto" style={{ color: "var(--foreground)", opacity: 0.7 }}>
               We&apos;re currently focused on fixing the order-to-cash process —
               the messy, manual process that slows down revenue and cash flow.
               Our goal: get businesses paid faster, and systems completely in

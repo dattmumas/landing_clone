@@ -35,7 +35,7 @@ const OurTeamPage: React.FC = () => {
   return (
     <>
       <NavBar />
-      <div className="bg-white min-h-screen">
+      <div style={{ background: "var(--background)", color: "var(--foreground)" }} className="min-h-screen">
         {/* Header Section */}
         <div
           className="bg-black text-white py-20"
@@ -62,11 +62,11 @@ const OurTeamPage: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-white rounded-xl shadow-xl overflow-hidden"
+                className="rounded-xl shadow-xl overflow-hidden" style={{ background: "var(--card-background)", color: "var(--card-foreground)" }}
               >
                 <div className="flex flex-col md:flex-row">
                   {/* Headshot placeholder */}
-                  <div className="md:w-2/5 bg-gray-200 h-80 flex items-center justify-center">
+                  <div className="md:w-2/5 h-80 flex items-center justify-center" style={{ background: "var(--muted-background)" }}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -75,12 +75,12 @@ const OurTeamPage: React.FC = () => {
                       strokeWidth="1"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="w-24 h-24 text-gray-400"
+                      className="w-24 h-24" style={{ color: "var(--card-foreground)", opacity: 0.4 }}
                     >
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                       <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                    <p className="absolute text-gray-500 mt-32">
+                    <p className="absolute mt-32" style={{ color: "var(--card-foreground)", opacity: 0.5 }}>
                       Headshot Placeholder
                     </p>
                   </div>
@@ -91,14 +91,14 @@ const OurTeamPage: React.FC = () => {
                     <p className="text-lg mb-4" style={{ color: "#118ab2" }}>
                       {member.role}
                     </p>
-                    <p className="text-gray-700 mb-6">{member.bio}</p>
+                    <p className="mb-6" style={{ color: "var(--card-foreground)", opacity: 0.8 }}>{member.bio}</p>
 
-                    <h3 className="font-semibold mb-2 text-gray-900">
+                    <h3 className="font-semibold mb-2" style={{ color: "var(--card-foreground)" }}>
                       Experience
                     </h3>
                     <ul className="space-y-1">
                       {member.experience.map((item, i) => (
-                        <li key={i} className="text-gray-700 flex items-start">
+                        <li key={i} className="flex items-start" style={{ color: "var(--card-foreground)", opacity: 0.8 }}>
                           <span
                             className="text-sm mr-2 mt-1"
                             style={{ color: "#06d6a0" }}
@@ -137,10 +137,10 @@ const OurTeamPage: React.FC = () => {
         </div>
 
         {/* Join Our Team Section */}
-        <div className="bg-gray-50 py-16">
+        <div className="py-16" style={{ background: "var(--muted-background)" }}>
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold mb-6">Join Our Team</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+            <p className="text-xl max-w-3xl mx-auto mb-8" style={{ color: "var(--foreground)", opacity: 0.8 }}>
               We&apos;re looking for passionate individuals who want to reshape
               the future of enterprise software and financial operations.
             </p>
@@ -159,7 +159,7 @@ const OurTeamPage: React.FC = () => {
         {/* Advisors Section - Placeholder for future expansion */}
         <div className="container mx-auto px-6 py-20">
           <h2 className="text-3xl font-bold mb-12 text-center">Our Advisors</h2>
-          <div className="text-center text-gray-500 py-16 border-2 border-dashed border-gray-200 rounded-xl">
+          <div className="text-center py-16 border-2 border-dashed rounded-xl" style={{ color: "var(--foreground)", opacity: 0.5, borderColor: "var(--card-foreground)" }}>
             <p className="text-xl">Advisor profiles coming soon</p>
           </div>
         </div>

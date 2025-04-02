@@ -25,7 +25,7 @@ const LiveDataPointsComponent: React.FC = () => {
   return (
     <div className="w-full my-12 max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4" style={{ color: "var(--card-foreground)" }}>
           In Payce, your purchase orders and invoices will exist as
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06d6a0] to-[#118ab2]">
             {" "}
@@ -39,10 +39,11 @@ const LiveDataPointsComponent: React.FC = () => {
       {/* Graphic and features in a flex layout */}
       <div className="flex flex-col md:flex-row gap-10 items-stretch">
         {/* Interactive SVG Graphic */}
-        <div className="relative w-full md:w-2/3 h-96 md:h-[450px] bg-white rounded-xl shadow-xl overflow-hidden">
+        <div className="relative w-full md:w-2/3 h-96 md:h-[450px] rounded-xl shadow-xl overflow-hidden"
+          style={{ background: "var(--card-background)" }}>
           {/* Status text at left - styled as a feature text */}
           <div className="absolute top-4 left-8 text-left z-10 max-w-sm">
-            <p className="text-base font-medium text-gray-800 transition-opacity duration-500 flex items-center">
+            <p className="text-base font-medium transition-opacity duration-500 flex items-center" style={{ color: "var(--card-foreground)" }}>
               <span className="inline-block w-4 h-4 rounded-full bg-[#06d6a0] mr-3 flex-shrink-0"></span>
               {animationMessages[animationState]}
             </p>
@@ -60,8 +61,9 @@ const LiveDataPointsComponent: React.FC = () => {
                 <path
                   d="M 40 0 L 0 0 0 40"
                   fill="none"
-                  stroke="#000"
+                  stroke="var(--card-foreground)"
                   strokeWidth="0.5"
+                  style={{ opacity: 0.3 }}
                 />
               </pattern>
               <rect width="100%" height="100%" fill="url(#grid)" />
@@ -90,7 +92,7 @@ const LiveDataPointsComponent: React.FC = () => {
               </div>
             </div>
             <div className="mt-3 flex flex-col items-center">
-              <div className="font-semibold text-gray-700">Purchase Order</div>
+              <div className="font-semibold" style={{ color: "var(--card-foreground)" }}>Purchase Order</div>
               <div className="text-xs text-[#06d6a0] font-medium mt-1">
                 Terms Updated
               </div>
@@ -118,7 +120,7 @@ const LiveDataPointsComponent: React.FC = () => {
               </div>
             </div>
             <div className="mt-3 flex flex-col items-center">
-              <div className="font-semibold text-gray-700">Invoice</div>
+              <div className="font-semibold" style={{ color: "var(--card-foreground)" }}>Invoice</div>
               <div className="text-xs text-[#118ab2] font-medium mt-1">
                 Payment Processing
               </div>
@@ -185,8 +187,11 @@ const LiveDataPointsComponent: React.FC = () => {
 
                   {isCurrent && (
                     <div
-                      className="absolute top-8 left-1/2 transform -translate-x-1/2 bg-white text-xs p-2 rounded shadow-md whitespace-nowrap"
-                      style={{ color: i < 2 ? "#06d6a0" : "#118ab2" }}
+                      className="absolute top-8 left-1/2 transform -translate-x-1/2 text-xs p-2 rounded shadow-md whitespace-nowrap"
+                      style={{ 
+                        color: i < 2 ? "#06d6a0" : "#118ab2",
+                        background: "var(--card-background)"
+                      }}
                     >
                       {i === 0 && "PO Received"}
                       {i === 1 && "Order Accepted"}
@@ -202,9 +207,9 @@ const LiveDataPointsComponent: React.FC = () => {
 
           {/* Dynamic attributes updating */}
           <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-12">
-            <div className="bg-white rounded-lg shadow-lg p-3 flex items-center">
+            <div className="rounded-lg shadow-lg p-3 flex items-center" style={{ background: "var(--card-background)" }}>
               <div className="w-3 h-3 rounded-full bg-[#06d6a0] mr-2"></div>
-              <div className="text-sm">
+              <div className="text-sm" style={{ color: "var(--card-foreground)" }}>
                 <div className="font-semibold">Amount</div>
                 <div
                   className={`font-mono ${
@@ -216,9 +221,9 @@ const LiveDataPointsComponent: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-3 flex items-center">
+            <div className="rounded-lg shadow-lg p-3 flex items-center" style={{ background: "var(--card-background)" }}>
               <div className="w-3 h-3 rounded-full bg-[#118ab2] mr-2"></div>
-              <div className="text-sm">
+              <div className="text-sm" style={{ color: "var(--card-foreground)" }}>
                 <div className="font-semibold">Status</div>
                 <div
                   className={`font-mono ${
@@ -230,9 +235,9 @@ const LiveDataPointsComponent: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-3 flex items-center">
+            <div className="rounded-lg shadow-lg p-3 flex items-center" style={{ background: "var(--card-background)" }}>
               <div className="w-3 h-3 rounded-full bg-[#06d6a0] mr-2"></div>
-              <div className="text-sm">
+              <div className="text-sm" style={{ color: "var(--card-foreground)" }}>
                 <div className="font-semibold">Due Date</div>
                 <div
                   className={`font-mono ${
@@ -247,8 +252,8 @@ const LiveDataPointsComponent: React.FC = () => {
         </div>
 
         {/* Feature highlights in a single column to the right */}
-        <div className="w-full md:w-1/3 bg-white p-6 rounded-xl shadow-xl">
-          <h3 className="text-xl font-bold mb-6 text-gray-900">Key Features</h3>
+        <div className="w-full md:w-1/3 p-6 rounded-xl shadow-xl" style={{ background: "var(--card-background)", color: "var(--card-foreground)" }}>
+          <h3 className="text-xl font-bold mb-6">Key Features</h3>
 
           <div className="mb-6">
             <div className="flex items-start mb-2">
@@ -266,7 +271,7 @@ const LiveDataPointsComponent: React.FC = () => {
                 <h4 className="font-semibold text-sm">
                   Auto-Updating Documents
                 </h4>
-                <p className="text-gray-600 text-xs">
+                <p className="text-xs" style={{ opacity: 0.7 }}>
                   Changes in terms, pricing, or schedules automatically update
                   across all related documents.
                 </p>
@@ -294,7 +299,7 @@ const LiveDataPointsComponent: React.FC = () => {
                 <h4 className="font-semibold text-sm">
                   Intelligent Data Connectivity
                 </h4>
-                <p className="text-gray-600 text-xs">
+                <p className="text-xs" style={{ opacity: 0.7 }}>
                   Documents maintain relationships with each other, ensuring
                   consistency across your financial operations.
                 </p>
@@ -320,7 +325,7 @@ const LiveDataPointsComponent: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm">Automated Workflows</h4>
-                <p className="text-gray-600 text-xs">
+                <p className="text-xs" style={{ opacity: 0.7 }}>
                   From approval processes to payment scheduling, customizable
                   workflows that guarantee payments are collected timely and
                   accurately.

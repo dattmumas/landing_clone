@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card-background: #ffffff;
+  --card-foreground: #171717;
+  --muted-background: #f3f4f6; /* gray-100 */
+  --gradient-from: white;
+  --gradient-via: white;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
@@ -17,6 +22,11 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --card-background: #171717;
+    --card-foreground: #ededed;
+    --muted-background: #1e1e1e; /* dark gray equivalent */
+    --gradient-from: #0a0a0a;
+    --gradient-via: #0a0a0a;
   }
 }
 
