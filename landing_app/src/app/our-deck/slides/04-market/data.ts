@@ -33,7 +33,7 @@ export const slideData = {
   targetSegment: {
     funding: {
       label: "Post-Seed to Series B",
-      description: "$1M-$20M Raised",
+      description: "$.5M-$20M Raised",
     },
     revenue: {
       label: "Revenue-Generating",

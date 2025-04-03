@@ -241,7 +241,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     zIndex: 10,
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
-    fontSize: "3rem", // Base size fallback for older browsers
+    fontSize: "3.5rem", // Base size fallback for older browsers
   },
   subtext: {
     color: "#CCCCCC",
@@ -251,7 +251,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     zIndex: 10,
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
-    fontSize: "1.2rem", // Base size fallback for older browsers
+    fontSize: "1.4rem", // Base size fallback for older browsers
   },
 };
 
