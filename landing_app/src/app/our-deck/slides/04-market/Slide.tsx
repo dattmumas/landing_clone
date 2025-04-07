@@ -82,7 +82,7 @@ const MarketSlide: React.FC = () => {
                   {slideData.marketStats.tamDescription}
                 </p>
                 {slideData.marketStats.tamSource && (
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-[10px] text-gray-400 mt-0.5 italic">
                     Source: {slideData.marketStats.tamSource}
                   </p>
                 )}
@@ -95,7 +95,7 @@ const MarketSlide: React.FC = () => {
                   {slideData.marketStats.growthRateDescription}
                 </p>
                 {slideData.marketStats.growthRateSource && (
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-[10px] text-gray-400 mt-0.5 italic">
                     Source: {slideData.marketStats.growthRateSource}
                   </p>
                 )}
@@ -109,7 +109,7 @@ const MarketSlide: React.FC = () => {
               <AlertCircle size={20} className="mr-2" /> Market Pain & Spend
               Drivers
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-2">
               <p className="text-sm text-gray-700">
                 {slideData.marketSpend.workingCapitalLoss}
               </p>
@@ -118,7 +118,7 @@ const MarketSlide: React.FC = () => {
                   {slideData.marketSpend.upgradeIntent}
                 </p>
                 {slideData.marketSpend.upgradeIntentSource && (
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-[10px] text-gray-400 italic">
                     Source: {slideData.marketSpend.upgradeIntentSource}
                   </p>
                 )}
@@ -134,7 +134,7 @@ const MarketSlide: React.FC = () => {
             <h3 className="text-lg font-semibold mb-3 text-gray-700 flex items-center">
               <TrendingUp size={20} className="mr-2" /> Key Metrics Summary
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {slideData.keyMetrics.map((metric, index) => (
                 <li
                   key={index}
@@ -150,12 +150,12 @@ const MarketSlide: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-[9px] text-gray-400 mt-1 italic leading-tight">
               *Sources:{" "}
               {slideData.keyMetrics
                 .filter((m) => m.source)
                 .map((m) => `${m.label}: ${m.source}`)
-                .join(", ")}
+                .join("; ")}
             </p>
           </div>
         </div>

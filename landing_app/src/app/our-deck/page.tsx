@@ -105,29 +105,44 @@ export default function OurDeck() {
         </div>
       </header>
 
-      {/* Main content area - taking up more space */}
-      <main className="flex-grow flex flex-col">
+      {/* Main content area - Ensure flex items don't overflow */}
+      <main className="flex-grow flex flex-col min-h-0">
         {/* Slide navigation at top - made more compact */}
         <SlideNavigation
           currentSlide={currentSlide}
           setCurrentSlide={setCurrentSlide}
         />
 
-        {/* Slide display area - maximized space */}
+        {/* Slide display area - outer flex container */}
         <div
           ref={deckContainerRef}
-          className="flex-grow flex items-center justify-center p-2 bg-gray-200 overflow-hidden"
+          className="flex-grow flex items-center justify-center p-2 sm:p-4 bg-gray-200 w-full min-h-0"
           style={{
-            containerType: "inline-size",
-            containerName: "slideContainer",
+            containerType: "size",
+            containerName: "slide-container",
           }}
         >
+          {/* Inner container respects parent bounds, aspect ratio, and max dimensions */}
           <div
-            className={`relative bg-white rounded-lg shadow-xl overflow-hidden ${
-              isFullscreen ? "w-full h-full" : "w-full max-w-7xl aspect-[16/9]"
-            }`}
+            className="relative bg-white rounded-lg shadow-xl overflow-hidden w-full h-full"
+            style={
+              {
+                aspectRatio: "16/9",
+                // Set max dimensions ONLY when not in fullscreen
+                // These act as upper bounds within the available flex space
+                maxWidth: isFullscreen ? "none" : "1600px",
+                maxHeight: isFullscreen ? "none" : "900px",
+                // Inherit size from parent, let aspect ratio constrain it
+                // Margin auto centers it if space is larger than max dimensions
+                margin: "auto",
+                // CSS custom properties for slides (no changes here)
+                "--slide-padding-base": "clamp(0.75rem, 2vw, 1.5rem)",
+                "--slide-padding-scale": "clamp(0.25cqi, 0.5cqi, 0.75cqi)",
+              } as React.CSSProperties
+            }
           >
-            <div className="absolute inset-0 overflow-auto">
+            {/* Absolute positioned content container */}
+            <div className="absolute inset-0 flex flex-col rounded-lg overflow-hidden">
               <AnimatePresence mode="wait">
                 <CurrentSlideComponent key={currentSlide} />
               </AnimatePresence>

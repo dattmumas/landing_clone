@@ -39,19 +39,19 @@ const TeamSlide: React.FC = () => {
         {slideData.title}
       </motion.h2>
 
-      {/* Main content area */}
-      <div className="flex-grow flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-8 overflow-y-auto px-4 max-w-2xl mx-auto">
-        {/* Team Member Cards */}
+      {/* Main content area - Symmetrical grid layout */}
+      <div className="flex-grow grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+        {/* Team Member Cards - Aligned in a balanced grid */}
         {slideData.teamMembers.map((member, index) => (
           <motion.div
             key={member.name}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 + index * 0.15 }}
-            className="w-full bg-gray-50 rounded-xl shadow-lg p-5 text-center border-t-4 border-blue-400 flex flex-col items-center"
+            transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+            className="bg-white rounded-lg shadow p-4 text-center border-t-4 border-blue-400 flex flex-col items-center h-full"
           >
             {/* Placeholder Image/Icon */}
-            <div className="w-24 h-24 rounded-full bg-gray-200 mb-3 flex items-center justify-center overflow-hidden">
+            <div className="w-20 h-20 rounded-full bg-gray-100 mb-3 flex items-center justify-center overflow-hidden border-2 border-blue-100">
               {/* Basic check if imageUrl is a placeholder or potentially real */}
               {member.imageUrl &&
               !member.imageUrl.includes("placeholder") &&
@@ -59,29 +59,29 @@ const TeamSlide: React.FC = () => {
                 <Image
                   src={member.imageUrl}
                   alt={member.name}
-                  width={96}
-                  height={96}
+                  width={80}
+                  height={80}
                   className="object-cover"
                 />
               ) : (
                 <GetIcon
                   name="UserCircle2"
-                  size={48}
+                  size={32}
                   className="text-gray-400"
                 />
               )}
             </div>
-            <h3 className="text-xl font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-gray-900 mb-1">
               {member.name}
             </h3>
             <p className="text-sm font-medium text-blue-600 mb-2">
               {member.title}
             </p>
-            <p className="text-xs text-gray-600 mb-3 leading-relaxed italic">
+            <p className="text-xs text-gray-600 mb-3 leading-tight italic flex-grow">
               {member.bio}
             </p>
-            <ul className="text-left text-xs text-gray-700 space-y-1 list-disc list-outside pl-4">
-              {member.keyPoints.map((point, i) => (
+            <ul className="text-left text-xs text-gray-700 space-y-1 list-disc list-outside pl-4 w-full">
+              {member.keyPoints.slice(0, 2).map((point, i) => (
                 <li key={i}>{point}</li>
               ))}
             </ul>
@@ -89,14 +89,14 @@ const TeamSlide: React.FC = () => {
         ))}
       </div>
 
-      {/* Team Philosophy / Why Us Section */}
+      {/* Team Philosophy / Why Us Section - Centered at the bottom */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
-        className="mt-6 md:mt-8 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg text-center max-w-3xl mx-auto flex-shrink-0"
+        className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg text-center max-w-3xl mx-auto flex-shrink-0"
       >
-        <h4 className="text-lg font-semibold mb-1 flex items-center justify-center text-cyan-700">
+        <h4 className="text-lg font-semibold mb-2 flex items-center justify-center text-cyan-700">
           <GetIcon
             name={slideData.teamPhilosophy.icon}
             size={20}
@@ -117,7 +117,8 @@ const TeamSlide: React.FC = () => {
           transition={{ delay: 0.8 }}
           className="text-center mt-4 text-xs text-gray-500 flex-shrink-0"
         >
-          Advisors: {slideData.advisors.map((a: Advisor) => a.name).join(", ")}
+          <span className="font-medium">Advisors:</span>{" "}
+          {slideData.advisors.map((a: Advisor) => a.name).join(", ")}
         </motion.div>
       )}
     </motion.div>

@@ -1,3 +1,69 @@
+/*
+ * Fullscreen Optimization Guidelines for All Slides
+ * ------------------------------------------------
+ *
+ * This presentation now uses a consistent approach to ensure proper scaling
+ * between fullscreen and normal modes. All slides should:
+ *
+ * 1. Import utilities from the central responsiveStyles.ts file:
+ *    ```
+ *    import {
+ *      useTextStyles,
+ *      getSpacing,
+ *      getIconClass,
+ *      motionVariants,
+ *      getGridConfig
+ *    } from "../../util/responsiveStyles";
+ *    ```
+ *
+ * 2. Use the text styling utility for consistent typography:
+ *    ```
+ *    const textStyles = useTextStyles();
+ *    // Then in your JSX:
+ *    <h1 style={textStyles.title}>Heading</h1>
+ *    <p style={textStyles.body}>Body text</p>
+ *    ```
+ *
+ * 3. Use consistent spacing utilities:
+ *    ```
+ *    // For container padding:
+ *    <div style={getSpacing.container}>
+ *
+ *    // For flexible gaps and margins:
+ *    <div style={getSpacing.gap.medium}>
+ *    <div style={getSpacing.padding.large}>
+ *    ```
+ *
+ * 4. Use CSS classes for responsive icon sizing (to avoid hydration errors):
+ *    ```
+ *    <GetIcon
+ *      name="IconName"
+ *      size={24}
+ *      className={`${getIconClass(24)} mr-2 text-blue-500`}
+ *    />
+ *    ```
+ *    Note: The `size` prop and `getIconClass()` should use the SAME number
+ *    to avoid hydration mismatches. The actual sizing will be handled by CSS.
+ *
+ * 5. Use pre-configured grid layouts:
+ *    ```
+ *    <div
+ *      className={getGridConfig.twoColumns.className}
+ *      style={getGridConfig.twoColumns.style}
+ *    >
+ *    ```
+ *
+ * 6. Use consistent animation variants:
+ *    ```
+ *    <motion.div {...motionVariants.fadeIn}>
+ *    <motion.div {...motionVariants.slideUp}>
+ *    ```
+ *
+ * These patterns have been implemented in the Intro slide (01), Problem slide (02),
+ * and Financials slide (10) as examples. All other slides should be updated following
+ * the same approach for consistent scaling behavior.
+ */
+
 import { default as IntroSlide } from "./01-intro/Slide";
 import { default as ProblemSlide } from "./02-problem/Slide";
 import { default as SolutionSlide } from "./03-solution/Slide";

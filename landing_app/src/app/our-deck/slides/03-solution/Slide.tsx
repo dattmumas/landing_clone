@@ -60,24 +60,24 @@ const SolutionSlide: React.FC = () => {
         ></div>
       </div>
 
-      {/* Main content - Adjusted 2 Column Layout */}
-      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden">
+      {/* Main content - Balanced 2 Column Layout */}
+      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {/* === Left Column === */}
-        <div className="flex flex-col gap-4 overflow-y-auto pr-2">
+        <div className="flex flex-col gap-4 h-full">
           {/* Title & Solution Summary */}
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7 }}
-            className="mb-4"
+            className="mb-2"
           >
             <h2
-              className={`text-3xl md:text-4xl font-bold text-white mb-3`}
+              className={`text-2xl md:text-3xl font-bold text-white mb-2`}
               style={{ textShadow: "0 0 10px rgba(255, 255, 255, 0.3)" }}
             >
               {slideData.title}
             </h2>
-            <p className={`text-md md:text-lg text-gray-300`}>
+            <p className={`text-sm md:text-md text-gray-300`}>
               {slideData.solutionSummary}
             </p>
           </motion.div>
@@ -92,7 +92,7 @@ const SolutionSlide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-3 text-[#06d6a0]">
               Key Outcomes
             </h3>
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 gap-3">
               {slideData.valueProposition.map((prop, index) => (
                 <div key={index} className="flex items-center">
                   <GetIcon
@@ -114,7 +114,7 @@ const SolutionSlide: React.FC = () => {
             initial={{ x: -30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20 flex-grow"
           >
             <h3 className="text-xl font-semibold mb-3 text-[#118ab2] flex items-center">
               <GetIcon
@@ -137,39 +137,10 @@ const SolutionSlide: React.FC = () => {
               ))}
             </ul>
           </motion.div>
-
-          {/* Validation */}
-          <motion.div
-            initial={{ x: -30, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20 mt-auto"
-          >
-            <h3 className="text-xl font-semibold mb-3 text-white flex items-center">
-              <GetIcon
-                name={slideData.validation.icon}
-                size={20}
-                className="mr-2 text-green-400"
-              />
-              {slideData.validation.title}
-            </h3>
-            <p className="text-sm text-gray-300 mb-1">
-              <span className="font-medium">Status:</span>{" "}
-              {slideData.validation.status}
-            </p>
-            <p className="text-sm text-gray-300 mb-1">
-              <span className="font-medium">Next:</span>{" "}
-              {slideData.validation.nextSteps}
-            </p>
-            <p className="text-sm text-gray-300">
-              <span className="font-medium">Interest:</span>{" "}
-              {slideData.validation.earlyInterest}
-            </p>
-          </motion.div>
         </div>
 
         {/* === Right Column === */}
-        <div className="flex flex-col gap-4 overflow-y-auto pr-2">
+        <div className="flex flex-col gap-4 h-full">
           {/* Key Features */}
           <motion.div
             initial={{ x: 30, opacity: 0 }}
@@ -209,13 +180,15 @@ const SolutionSlide: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="bg-black/50 rounded-lg p-4 border border-dashed border-white/30 flex items-center justify-center aspect-video max-w-md mx-auto"
+            className="bg-black/50 rounded-lg p-4 border border-dashed border-white/30 flex items-center justify-center flex-grow"
           >
-            <p className="text-gray-400 text-center text-sm">
-              [Placeholder: Product Screenshot/Mockup]
-              <br />
-              (e.g., Dashboard showing automated workflow)
-            </p>
+            <div className="aspect-video w-full max-w-md mx-auto flex items-center justify-center">
+              <p className="text-gray-400 text-center text-sm">
+                [Placeholder: Product Screenshot/Mockup]
+                <br />
+                (e.g., Dashboard showing automated workflow)
+              </p>
+            </div>
           </motion.div>
 
           {/* Key Metrics */}
@@ -223,12 +196,12 @@ const SolutionSlide: React.FC = () => {
             initial={{ x: 30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20 mt-auto"
+            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20"
           >
             <h3 className="text-xl font-semibold mb-3 text-[#118ab2]">
               Expected Impact (Metrics)
             </h3>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-2 gap-2">
               {slideData.keyMetrics.map((metric, index) => (
                 <li
                   key={index}
@@ -241,15 +214,6 @@ const SolutionSlide: React.FC = () => {
                       className="mr-2 text-[#118ab2]"
                     />
                     {metric.label}
-                    {metric.source && (
-                      <span className="text-xs text-gray-500 ml-1">
-                        (
-                        {metric.source === "Pre-launch interest"
-                          ? "Interest"
-                          : metric.source}
-                        )
-                      </span>
-                    )}
                   </span>
                   <span className="font-semibold text-white">
                     {metric.value}

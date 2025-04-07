@@ -153,7 +153,12 @@ const HeroBackground: React.FC = () => {
 
   // Calculate fade progress for gradient with useMemo
   const fadeProgress = useMemo(() => {
-    return Math.min(scrollY / (heroHeight * 0.5), 1);
+    // Ensure heroHeight is not zero to prevent NaN/Infinity
+    if (heroHeight === 0) {
+      return 0; // Default to fully transparent if height is unknown
+    }
+    const progress = scrollY / (heroHeight * 0.5);
+    return Math.min(Math.max(progress, 0), 1); // Clamp value between 0 and 1
   }, [scrollY, heroHeight]);
 
   // Create the container style with proper typing
