@@ -1,54 +1,99 @@
-// src/app/our-deck/slides/03-transformation/data.ts
+// src/app/our-deck/slides/03-solution/data.ts
 
 export const slideData = {
-  title: "Our Approach",
-  subtitle: "Transforming Enterprise Software Through Automation",
+  title: "Our Solution: Payce - Automated Order-to-Cash",
+  solutionSummary:
+    "Payce is a cloud-based automation tool that handles the entire order-to-cash process – from invoicing to reminders to reconciliation – with minimal human input, acting as an 'autopilot' for your receivables.",
 
-  mainPoints: [
+  keyFeatures: [
     {
-      title: "Automated Financial Operations",
+      title: "One-Click Invoicing",
       description:
-        "We're building systems that execute financial processes with minimal human intervention, eliminating manual tasks and reducing errors by 95%.",
-      icon: "⚙️",
+        "Automated invoice generation and delivery, eliminating manual work.",
+      icon: "FileText", // Lucide icon name
     },
     {
-      title: "Redefining Financial Rails",
+      title: "Smart Collections",
       description:
-        "By creating new connectivity between systems, we enable seamless data flow that powers intelligent automation across the entire finance function.",
-      icon: "🔄",
+        "Automated reminders & AI-driven nudges for late payers, accelerating cash flow.",
+      icon: "BellRing", // Lucide icon name
     },
     {
-      title: "Virtual Bank Accounts Integration",
+      title: "Real-Time Receivables Dashboard",
       description:
-        "Our platform leverages virtual bank accounts to streamline money movement, automate reconciliation, and provide real-time visibility.",
-      icon: "🏦",
+        "Instant visibility into cash flow, DSO, and aging receivables.",
+      icon: "BarChart3", // Lucide icon name
+    },
+    {
+      title: "Automated Reconciliation",
+      description:
+        "Integrates with sales and banking data to automatically match payments.",
+      icon: "RefreshCw", // Lucide icon name
     },
   ],
 
-  technologies: [
+  valueProposition: [
     {
-      name: "Neobank APIs",
-      description:
-        "Connecting with digital-first banking platforms to access modern financial infrastructure",
-      percentage: 85,
+      metric: "~50% Faster Payments", // Example: Cut 60 days to 30
+      description: "Reduce average payment cycle significantly.",
+      icon: "Zap",
     },
     {
-      name: "Workflow Automation",
-      description:
-        "Building rule-based engines that execute complex financial processes",
-      percentage: 92,
+      metric: "70%+ Less Manual Work",
+      description: "Free up team time from tedious follow-ups and data entry.",
+      icon: "UserMinus",
     },
     {
-      name: "Data Synchronization",
-      description:
-        "Ensuring real-time consistency across all financial systems",
-      percentage: 78,
+      metric: "Improved Cash Flow",
+      description: "Gain better control and predictability of cash inflows.",
+      icon: "TrendingUp",
     },
   ],
 
-  impactMetric: {
-    figure: "75%",
-    label:
-      "Reduction in manual finance tasks achieved through our automation platform",
+  differentiation: {
+    title: "What Makes Payce Different?",
+    points: [
+      "End-to-end automation in a single, user-friendly platform designed for SMBs.",
+      "AI-driven predictions to proactively manage payment risks.",
+      "Seamless integration with existing accounting (QuickBooks, Xero) & banking systems.",
+      "Acts as an 'autopilot', not just another tool, by connecting disparate data.",
+    ],
+    icon: "Sparkles",
   },
+
+  validation: {
+    title: "Stage & Early Validation",
+    status: "Working MVP processing internal test data.",
+    nextSteps: "Pilot programs slated for Q3.",
+    earlyInterest: "5+ target startups confirmed for beta program.", // Example validation point
+    icon: "CheckCircle",
+  },
+
+  keyMetrics: [
+    {
+      label: "DSO Reduction Potential",
+      value: "30%+",
+      source: "Industry benchmarks / Projections",
+      icon: "Clock",
+    },
+    {
+      label: "Invoice Processing Cost Reduction",
+      value: "~90%",
+      source: "MORDORINTELLIGENCE.COM (Automation Savings)",
+      icon: "DollarSign",
+    },
+    {
+      label: "Setup Time",
+      value: "< 1 Day",
+      source: "Target User Experience",
+      icon: "Play",
+    },
+    {
+      label: "Beta Program Signups",
+      value: "5+",
+      source: "Pre-launch interest",
+      icon: "Users",
+    },
+    // Removed old 'technologies' and 'impactMetric'
+  ],
 };

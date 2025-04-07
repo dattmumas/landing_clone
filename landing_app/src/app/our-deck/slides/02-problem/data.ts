@@ -2,38 +2,73 @@
 // src/app/our-deck/slides/02-problem/data.ts
 
 export const slideData = {
-  title: "The Problem",
-  subtitle: "Modern Operational Systems Face Critical Challenges",
+  title: "The Problem: Broken Order-to-Cash Cripples SMBs",
+  subtitle:
+    "Manual processes lead to delayed payments, wasted time, and stunted growth.",
 
-  problemStatement:
-    "Modern finance and operations systems are not designed to optimally handle automation as a presumed reality. They require manual intervention at every step, communication between parties to translate operational information into financial entries, and are designed with yesterday's realities at their core.",
+  painPointOverview:
+    "Small businesses struggle to get paid on time. They manually invoice, track payments in spreadsheets, and spend countless hours chasing late payments, choking their cash flow lifeline.",
 
-  keyProblems: [
+  consequences: [
+    "Severe cash flow crunches threatening survival.",
+    "High Days Sales Outstanding (DSO) - waiting 60+ days for cash.",
+    "Significant lost productivity (10%+ of workday) on manual follow-ups.",
+    "Revenue leakage from errors, missed invoices, and write-offs.",
+    "Inability to forecast cash or invest in growth.",
+  ],
+
+  // Example scenario can be integrated into the slide narrative
+  example:
+    "A typical startup finance team spends 10% of their time just chasing invoices, while manual errors cost thousands in lost revenue.",
+
+  currentSolutionsFailures: {
+    title: "Why Current Tools Fail SMBs",
+    points: [
+      "Accounting software, Excel, and email are disconnected silos.",
+      "Lack of automation means repetitive manual tasks.",
+      "No real-time visibility into who owes what and when.",
+      "Things inevitably slip through the cracks.",
+    ],
+  },
+
+  scope: {
+    title: "A Universal SMB Headache",
+    description:
+      "From 5-person startups to mid-size retailers, millions of businesses bleed time and money due to antiquated O2C processes.",
+  },
+
+  keyMetrics: [
     {
-      title: "Manual Processing",
-      description:
-        "Operations teams spend critical time translating operational data into financial entries.",
-      icon: "⏱️",
+      value: "50%+ Paid Late",
+      label: "Over half of B2B invoices face delays.",
+      source: "UPFLOW.IO",
+      icon: "Clock", // Lucide icon
     },
     {
-      title: "Data Silos",
-      description:
-        "Fragmented financial data across systems creates reconciliation nightmares and visibility gaps.",
-      icon: "🧩",
+      value: "~10% Workday Lost",
+      label: "Time spent by SMB owners chasing payments.",
+      source: "UPFLOW.IO",
+      icon: "UserX", // Lucide icon
     },
     {
-      title: "Compliance Risk",
-      description:
-        "Human error in accounting processes leads to regulatory issues and financial discrepancies.",
-      icon: "⚠️",
+      value: "90% Cost Inefficiency",
+      label: "Manual invoice processing ($16-$22) vs. automated ($2).",
+      source: "MORDORINTELLIGENCE.COM",
+      icon: "DollarSign", // Lucide icon
+    },
+    {
+      value: "25% Bankruptcies",
+      label: "European SMB failures linked to late payments.",
+      source: "UPFLOW.IO",
+      icon: "TrendingDown", // Lucide icon
+    },
+    {
+      value: "60+ Days DSO",
+      label: "Common wait time for cash, hindering growth.",
+      source: "UPFLOW.IO (Typical)",
+      icon: "CalendarClock", // Lucide icon
     },
   ],
 
-  costMetric: {
-    figure: "$120B+",
-    label: "Annual cost of manual accounting processes for US businesses",
-  },
-
-  conclusion:
-    "These traditional finance operations create bottlenecks that prevent businesses from scaling, and necessitate teams of people who aren't pushing the ball forward.",
+  // Removed old problemStatement, keyProblems, costMetric, conclusion
 };

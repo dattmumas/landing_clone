@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
-import { Download, ArrowLeft } from "lucide-react";
+import { Download, ArrowLeft, Expand, Shrink } from "lucide-react";
 
 // Import slides and components
 import { slides, slidesMetadata } from "./slides";
@@ -12,6 +12,8 @@ import SlideNavigation from "./components/SlideNavigation";
 export default function OurDeck() {
   // State for current slide
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const deckContainerRef = useRef<HTMLDivElement>(null);
 
   // Keyboard navigation
   useEffect(() => {
@@ -28,6 +30,38 @@ export default function OurDeck() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Fullscreen change listener
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      // Check document property, not element, as element might be null on exit
+      setIsFullscreen(document.fullscreenElement != null);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
+  // Fullscreen toggle function
+  const toggleFullscreen = () => {
+    const element = deckContainerRef.current;
+    if (!element) return;
+
+    if (!document.fullscreenElement) {
+      element.requestFullscreen().catch((err) => {
+        console.error(
+          `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+        );
+        // Optionally, alert the user or provide fallback
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
   // Current slide component
   const CurrentSlideComponent = slides[currentSlide];
 
@@ -43,17 +77,31 @@ export default function OurDeck() {
 
           <h1 className="text-xl font-bold">Payce Investor Deck</h1>
 
-          <a
-            href="#"
-            className="flex items-center text-sm hover:text-gray-300 transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              alert("Download functionality will be added later");
-            }}
-          >
-            <Download className="mr-1 h-4 w-4" />
-            <span>Download PDF</span>
-          </a>
+          <div className="flex items-center space-x-4">
+            <a
+              href="#"
+              className="flex items-center text-sm hover:text-gray-300 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                alert("Download functionality will be added later");
+              }}
+            >
+              <Download className="mr-1 h-4 w-4" />
+              <span>Download PDF</span>
+            </a>
+            <button
+              onClick={toggleFullscreen}
+              title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+              className="flex items-center text-sm hover:text-gray-300 transition-colors"
+            >
+              {isFullscreen ? (
+                <Shrink className="mr-1 h-4 w-4" />
+              ) : (
+                <Expand className="mr-1 h-4 w-4" />
+              )}
+              <span>{isFullscreen ? "Exit Fullscreen" : "Fullscreen"}</span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -66,18 +114,23 @@ export default function OurDeck() {
         />
 
         {/* Slide display area - maximized space */}
-        <div className="flex-grow flex items-center justify-center p-0 sm:p-2">
-          <div className="w-full max-w-7xl mx-auto">
-            {/* Slide container with 16:9 aspect ratio - made responsive */}
-            <div
-              className="relative w-full"
-              style={{ paddingBottom: "56.25%" }}
-            >
-              <div className="absolute inset-0 bg-white rounded-lg shadow-xl overflow-y-auto h-full">
-                <AnimatePresence mode="wait">
-                  <CurrentSlideComponent key={currentSlide} />
-                </AnimatePresence>
-              </div>
+        <div
+          ref={deckContainerRef}
+          className="flex-grow flex items-center justify-center p-2 bg-gray-200 overflow-hidden"
+          style={{
+            containerType: "inline-size",
+            containerName: "slideContainer",
+          }}
+        >
+          <div
+            className={`relative bg-white rounded-lg shadow-xl overflow-hidden ${
+              isFullscreen ? "w-full h-full" : "w-full max-w-7xl aspect-[16/9]"
+            }`}
+          >
+            <div className="absolute inset-0 overflow-auto">
+              <AnimatePresence mode="wait">
+                <CurrentSlideComponent key={currentSlide} />
+              </AnimatePresence>
             </div>
           </div>
         </div>

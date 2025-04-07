@@ -1,32 +1,33 @@
-// src/app/our-deck/slides/03-transformation/Slide.tsx
+// src/app/our-deck/slides/03-solution/Slide.tsx
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { slideData } from "./data";
+// Import Lucide icons dynamically based on data
+import * as Icons from "lucide-react";
+
+// Helper to get icon component by name
+const GetIcon = ({ name, ...props }: { name: string } & Icons.LucideProps) => {
+  // Use 'any' cast specifically for the dynamic lookup and disable lint rule for this line
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const IconComponent = (Icons as any)[name];
+  if (!IconComponent) {
+    // Return a default icon or null if not found
+    return <Icons.HelpCircle {...props} />; // Default icon
+  }
+  // Render the dynamically found component
+  return <IconComponent {...props} />;
+};
 
 const SolutionSlide: React.FC = () => {
-  // Add state to track viewport dimensions for responsiveness
-  const [dimensions, setDimensions] = useState({
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-  });
+  // We can keep the responsive logic if needed, but simplify for clarity now
+  // const [dimensions, setDimensions] = useState(/* ... */);
+  // useEffect(/* ... */);
+  // const isMobile = dimensions.width < 768;
 
-  // Update dimensions on resize
-  useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Determine if we're on mobile or small screen
-  const isMobile = dimensions.width < 768;
-  const isSmallHeight = dimensions.height < 600;
+  // Simplified classes for demonstration
+  // Removed unused isMobile variable
+  // const isMobile = false; // Assume desktop for now
 
   return (
     <motion.div
@@ -34,9 +35,10 @@ const SolutionSlide: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full h-full flex flex-col relative overflow-hidden bg-gradient-to-br from-black to-gray-900"
+      // Retain the dark theme background
+      className="w-full h-full flex flex-col relative overflow-hidden bg-gradient-to-br from-black to-gray-900 text-white p-6 md:p-8"
     >
-      {/* Subtle technology pattern overlay */}
+      {/* Keep the subtle pattern and glows */}
       <div className="absolute inset-0 z-0 opacity-5">
         <div
           className="absolute inset-0"
@@ -47,264 +49,215 @@ const SolutionSlide: React.FC = () => {
           }}
         />
       </div>
-
-      {/* Glowing elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div
-          className={`absolute ${
-            isMobile
-              ? "top-10 right-10 w-32 h-32"
-              : "top-1/4 right-1/4 w-64 h-64"
-          } rounded-full opacity-20 blur-3xl`}
+          className={`absolute top-1/4 right-1/4 w-64 h-64 rounded-full opacity-15 blur-3xl`}
           style={{ backgroundColor: "#06d6a0" }}
         ></div>
         <div
-          className={`absolute ${
-            isMobile
-              ? "bottom-10 left-10 w-48 h-48"
-              : "bottom-1/4 left-1/4 w-96 h-96"
-          } rounded-full opacity-20 blur-3xl`}
+          className={`absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full opacity-15 blur-3xl`}
           style={{ backgroundColor: "#118ab2" }}
         ></div>
       </div>
 
-      {/* Main content */}
-      <div
-        className={`relative z-10 w-full h-full ${
-          isMobile ? "flex flex-col" : "grid grid-cols-2"
-        } gap-8 p-8 md:p-12`}
-      >
-        {/* Left column: Title and Technologies */}
-        <div className="flex flex-col">
-          {/* Title Section */}
-          <div className="mb-8">
-            <motion.h2
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.7 }}
-              className={`${
-                isMobile ? "text-3xl" : "text-4xl md:text-5xl"
-              } font-bold text-white mb-3`}
+      {/* Main content - Adjusted 2 Column Layout */}
+      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden">
+        {/* === Left Column === */}
+        <div className="flex flex-col gap-4 overflow-y-auto pr-2">
+          {/* Title & Solution Summary */}
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7 }}
+            className="mb-4"
+          >
+            <h2
+              className={`text-3xl md:text-4xl font-bold text-white mb-3`}
               style={{ textShadow: "0 0 10px rgba(255, 255, 255, 0.3)" }}
             >
               {slideData.title}
-            </motion.h2>
+            </h2>
+            <p className={`text-md md:text-lg text-gray-300`}>
+              {slideData.solutionSummary}
+            </p>
+          </motion.div>
 
-            <motion.p
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className={`${isMobile ? "text-xl" : "text-2xl md:text-3xl"}`}
-              style={{
-                color: "#06d6a0",
-                textShadow: "0 0 8px rgba(6, 214, 160, 0.5)",
-              }}
-            >
-              {slideData.subtitle}
-            </motion.p>
-          </div>
-
-          {/* Technologies Section with Progress Bars */}
-          <div className="flex-grow">
-            <motion.h3
-              initial={{ x: -30, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className={`text-white ${
-                isMobile ? "text-lg" : "text-xl"
-              } font-semibold mb-4`}
-            >
-              Technology Stack
-            </motion.h3>
-
-            <div className="space-y-5">
-              {slideData.technologies.map((tech, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="mb-3"
-                >
-                  <div className="flex justify-between mb-1">
-                    <span className="text-white font-medium">{tech.name}</span>
-                    <span className="text-gray-300">{tech.percentage}%</span>
+          {/* Value Proposition (Outcomes) */}
+          <motion.div
+            initial={{ x: -30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+          >
+            <h3 className="text-xl font-semibold mb-3 text-[#06d6a0]">
+              Key Outcomes
+            </h3>
+            <div className="space-y-4">
+              {slideData.valueProposition.map((prop, index) => (
+                <div key={index} className="flex items-center">
+                  <GetIcon
+                    name={prop.icon}
+                    size={24}
+                    className="mr-3 text-[#06d6a0] flex-shrink-0"
+                  />
+                  <div>
+                    <p className="font-semibold text-white">{prop.metric}</p>
+                    <p className="text-sm text-gray-400">{prop.description}</p>
                   </div>
-
-                  <div className="w-full bg-gray-700 rounded-full h-2.5">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${tech.percentage}%` }}
-                      transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
-                      className="h-2.5 rounded-full"
-                      style={{
-                        background: `linear-gradient(to right, #06d6a0, #118ab2)`,
-                        boxShadow: "0 0 10px rgba(6, 214, 160, 0.5)",
-                      }}
-                    ></motion.div>
-                  </div>
-
-                  <p
-                    className={`text-gray-400 ${
-                      isMobile || isSmallHeight
-                        ? "text-xs mt-1"
-                        : "text-sm mt-2"
-                    }`}
-                  >
-                    {tech.description}
-                  </p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Impact Metric */}
+          {/* Differentiation */}
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-auto pt-4"
+            initial={{ x: -30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20"
           >
-            <div
-              className="bg-black bg-opacity-50 rounded-lg p-4 border-l-4 inline-flex items-center"
-              style={{ borderLeftColor: "#118ab2" }}
-            >
-              <div>
-                <p
-                  className={`${isMobile ? "text-3xl" : "text-4xl"} font-bold`}
-                  style={{
-                    color: "#06d6a0",
-                    textShadow: "0 0 10px rgba(6, 214, 160, 0.5)",
-                  }}
-                >
-                  {slideData.impactMetric.figure}
-                </p>
-                <p className="text-white text-sm">
-                  {slideData.impactMetric.label}
-                </p>
-              </div>
-            </div>
+            <h3 className="text-xl font-semibold mb-3 text-[#118ab2] flex items-center">
+              <GetIcon
+                name={slideData.differentiation.icon}
+                size={20}
+                className="mr-2"
+              />
+              {slideData.differentiation.title}
+            </h3>
+            <ul className="space-y-2 list-inside text-sm text-gray-300">
+              {slideData.differentiation.points.map((point, index) => (
+                <li key={index} className="flex">
+                  <GetIcon
+                    name="Check"
+                    size={16}
+                    className="mr-2 mt-1 text-[#118ab2] flex-shrink-0"
+                  />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Validation */}
+          <motion.div
+            initial={{ x: -30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20 mt-auto"
+          >
+            <h3 className="text-xl font-semibold mb-3 text-white flex items-center">
+              <GetIcon
+                name={slideData.validation.icon}
+                size={20}
+                className="mr-2 text-green-400"
+              />
+              {slideData.validation.title}
+            </h3>
+            <p className="text-sm text-gray-300 mb-1">
+              <span className="font-medium">Status:</span>{" "}
+              {slideData.validation.status}
+            </p>
+            <p className="text-sm text-gray-300 mb-1">
+              <span className="font-medium">Next:</span>{" "}
+              {slideData.validation.nextSteps}
+            </p>
+            <p className="text-sm text-gray-300">
+              <span className="font-medium">Interest:</span>{" "}
+              {slideData.validation.earlyInterest}
+            </p>
           </motion.div>
         </div>
 
-        {/* Right column: Main Points */}
-        <div
-          className={`flex flex-col justify-center ${isMobile ? "mt-6" : ""}`}
-        >
-          <div className="space-y-6">
-            {slideData.mainPoints.map((point, index) => (
-              <motion.div
-                key={index}
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.2 + index * 0.15 }}
-                className="bg-black bg-opacity-40 backdrop-blur-sm rounded-xl p-5 border border-opacity-30"
-                style={{
-                  borderColor:
-                    index === 0
-                      ? "#06d6a0"
-                      : index === 1
-                      ? "#118ab2"
-                      : "#ffffff",
-                  boxShadow: `0 0 15px rgba(${
-                    index === 0
-                      ? "6, 214, 160"
-                      : index === 1
-                      ? "17, 138, 178"
-                      : "255, 255, 255"
-                  }, 0.15)`,
-                }}
-              >
-                <div className="flex items-start">
-                  <div
-                    className={`flex-shrink-0 ${
-                      isMobile || isSmallHeight
-                        ? "h-8 w-8 text-lg"
-                        : "h-10 w-10 text-xl"
-                    } rounded-full flex items-center justify-center mr-4`}
-                    style={{
-                      backgroundColor: "rgba(0, 0, 0, 0.3)",
-                      border: "1px solid",
-                      borderColor:
-                        index === 0
-                          ? "#06d6a0"
-                          : index === 1
-                          ? "#118ab2"
-                          : "#ffffff",
-                    }}
-                  >
-                    <span>{point.icon}</span>
-                  </div>
-
+        {/* === Right Column === */}
+        <div className="flex flex-col gap-4 overflow-y-auto pr-2">
+          {/* Key Features */}
+          <motion.div
+            initial={{ x: 30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+          >
+            <h3 className="text-xl font-semibold mb-4 text-[#06d6a0]">
+              Core Features
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {slideData.keyFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex items-start p-2 rounded bg-black/20"
+                >
+                  <GetIcon
+                    name={feature.icon}
+                    size={24}
+                    className="mr-3 text-[#06d6a0] flex-shrink-0 mt-1"
+                  />
                   <div>
-                    <h3
-                      className={`${
-                        isMobile || isSmallHeight ? "text-lg" : "text-xl"
-                      } font-semibold mb-2`}
-                      style={{
-                        color:
-                          index === 0
-                            ? "#06d6a0"
-                            : index === 1
-                            ? "#118ab2"
-                            : "#ffffff",
-                        textShadow: `0 0 8px rgba(${
-                          index === 0
-                            ? "6, 214, 160"
-                            : index === 1
-                            ? "17, 138, 178"
-                            : "255, 255, 255"
-                        }, 0.3)`,
-                      }}
-                    >
-                      {point.title}
-                    </h3>
-
-                    <p
-                      className={`text-gray-200 ${
-                        isMobile || isSmallHeight ? "text-sm" : "text-base"
-                      }`}
-                    >
-                      {point.description}
+                    <p className="font-medium text-white text-sm">
+                      {feature.title}
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      {feature.description}
                     </p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Visual Connector Lines - Only show on desktop */}
-          {!isMobile && (
-            <div className="relative mt-4 mx-auto w-3/4 h-12">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.9 }}
-                className="absolute top-0 left-1/4 w-1/2 h-full"
-              >
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 200 50"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0,25 C50,55 150,-5 200,25"
-                    stroke="url(#gradient)"
-                    strokeWidth="2"
-                    strokeDasharray="5,5"
-                  />
-                  <defs>
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#06d6a0" />
-                      <stop offset="100%" stopColor="#118ab2" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </motion.div>
+              ))}
             </div>
-          )}
+          </motion.div>
+
+          {/* Product Mockup Placeholder */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-black/50 rounded-lg p-4 border border-dashed border-white/30 flex items-center justify-center aspect-video max-w-md mx-auto"
+          >
+            <p className="text-gray-400 text-center text-sm">
+              [Placeholder: Product Screenshot/Mockup]
+              <br />
+              (e.g., Dashboard showing automated workflow)
+            </p>
+          </motion.div>
+
+          {/* Key Metrics */}
+          <motion.div
+            initial={{ x: 30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-white/20 mt-auto"
+          >
+            <h3 className="text-xl font-semibold mb-3 text-[#118ab2]">
+              Expected Impact (Metrics)
+            </h3>
+            <ul className="space-y-2">
+              {slideData.keyMetrics.map((metric, index) => (
+                <li
+                  key={index}
+                  className="flex items-center justify-between text-sm"
+                >
+                  <span className="flex items-center text-gray-300">
+                    <GetIcon
+                      name={metric.icon}
+                      size={16}
+                      className="mr-2 text-[#118ab2]"
+                    />
+                    {metric.label}
+                    {metric.source && (
+                      <span className="text-xs text-gray-500 ml-1">
+                        (
+                        {metric.source === "Pre-launch interest"
+                          ? "Interest"
+                          : metric.source}
+                        )
+                      </span>
+                    )}
+                  </span>
+                  <span className="font-semibold text-white">
+                    {metric.value}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </div>
     </motion.div>

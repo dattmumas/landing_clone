@@ -1,54 +1,70 @@
 // src/app/our-deck/slides/04-market/data.ts
 
 export const slideData = {
-  title: "Market Opportunity",
+  title: "Market Opportunity: Large, Growing, and Ready for Automation",
 
   marketStats: {
-    marketSize: "$5-7B",
-    marketSizeDescription:
-      "Financial operations software market for startups and SMBs",
-    growthRate: "11.7% CAGR",
-    growthRateDescription: "Growth rate of finance automation segment",
-    startups: "500K+",
-    startupsDescription: "New tech startups founded annually worldwide",
+    tam: "~$6 Billion",
+    tamYear: "in 2025",
+    tamDescription:
+      "Global Accounts Receivable/Order-to-Cash automation software market (software & services)",
+    tamSource: "MORDORINTELLIGENCE.COM",
+    growthRate: "~11.8% CAGR",
+    growthRateDescription:
+      "Fueled by digital transformation and cloud adoption in finance.",
+    growthRateSource: "MORDORINTELLIGENCE.COM",
   },
 
-  painPoints: [
-    {
-      stat: "10-20",
-      description:
-        "employees before a team makes their first finance or accounting hire",
-    },
-    {
-      stat: "15-20 hours",
-      description: "per week spent on financial administration",
-    },
-    {
-      stat: "Series A+",
-      description:
-        "Financial operations that work at seed stage break at this point",
-    },
+  segmentation: {
+    title: "Segmentation & Beachhead Focus",
+    totalTam: "$6B TAM",
+    smbSegment: "~$2B SMB Segment",
+    smbDescription: "Our initial beachhead market.",
+    midMarketEnterprise: "$3-4B Mid-Market & Enterprise",
+    midMarketEnterpriseDescription: "Addressable as Payce scales.",
+    smbPotentialCustomers: "~600k mid-sized US SMBs",
+    smbPotentialCustomersDescription:
+      "Ideal early adopters who invoice at scale.",
+  },
+
+  expansionVision: {
+    title: "Vision: Expanding Addressable Market",
+    initialFocus: "Order-to-Cash is the starting point.",
+    broaderMarket: "Broader Quote-to-Cash & Finance Automation Market",
+    broaderMarketSize: "$10B+ TAM",
+    broaderMarketDescription:
+      "Including billing, payments, and forecasting tools.",
+    longTermGoal:
+      "Plan to expand into adjacencies, building a platform company.",
+  },
+
+  marketSpend: {
+    title: "Market Pain Drives Spending",
+    workingCapitalLoss:
+      "Tens of billions lost annually in working capital due to slow collections.",
+    upgradeIntent: "62% of companies plan to upgrade AR tech.",
+    upgradeIntentSource: "UPFLOW.IO",
+    smbSpendContext:
+      "Significant SMB spend on internal AR staff and inefficient processes is convertible to automation tools like Payce.",
+  },
+
+  keyMetrics: [
+    { label: "TAM", value: "~$6B (2025)", source: "MORDORINTELLIGENCE.COM" },
+    { label: "Growth", value: "11.8% CAGR", source: "MORDORINTELLIGENCE.COM" },
+    { label: "SAM (US/EU SMB & Mid-Market)", value: "~$2B" },
+    { label: "Beachhead Customer Base", value: "~600k Mid-Sized SMBs (US)" },
+    { label: "AR Tech Upgrade Intent", value: "62%", source: "UPFLOW.IO" },
   ],
 
-  targetSegment: {
-    funding: {
-      label: "Post-Seed to Series B",
-      description: "$.5M-$20M Raised",
-    },
-    revenue: {
-      label: "Revenue-Generating",
-      description: "$500K-$10M ARR",
-    },
-  },
-
-  // Updated chart data to show market size by funding stage
   chartData: [
-    { name: "Pre-Seed", value: 15, color: "#d1d5db", marketSize: "$0.3B" },
-    { name: "Seed", value: 35, color: "#06d6a0", marketSize: "$0.9B" },
-    { name: "Series A", value: 65, color: "#06d6a0", marketSize: "$1.7B" },
-    { name: "Series B", value: 85, color: "#118ab2", marketSize: "$2.2B" },
-    { name: "Series C+", value: 100, color: "#d1d5db", marketSize: "$2.8B" },
+    { name: "SMB (Beachhead)", value: 2, color: "#06d6a0", segment: "SAM" },
+    {
+      name: "Mid-Market/Enterprise",
+      value: 4,
+      color: "#118ab2",
+      segment: "Expansion",
+    },
   ],
-  chartTitle: "Addressable Market by Funding Stage",
-  chartSubtitle: "Target: $4.8B combined market (Seed through Series B)",
+  chartTitle: "Market Segmentation ($6B TAM)",
+  chartSubtitle: "Initial Focus: $2B SMB Segment (SAM)",
 };
